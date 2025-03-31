@@ -1,0 +1,259 @@
+---
+title: "Final Project"
+author: "Miles Peña"
+date: "2024-03-02"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+
+# Step 1:
+
+## Introduction:
+
+Throughout the years, the United States of America has seen an increase in violence through mass shootings. Since the Sandy Hook Elementary School shooting, we have seen the numbers nearly triple in size. While, yes, the country should look at better gun control policies to solve this issue, as data scientists we can look at the data that we have collected from these shootings over the past 10 years to try to prevent these from happening in the future. We can look at different factors such as demographics, socioeconomic status, and the effect that mental illness can have on these shootings. This is important for individuals to be interested in because it is something that can potentially help reduce the number of shootings or hopefully eradicate them completely at some point in the future. With the amount of data that has been compiled since this great increase 10 years ago, it can now be a problem addressed through the help of data science.
+
+## Research Questions:
+
+1.     What is the choice of weapon for these shootings?
+
+2.     Do the shooters have a criminal background or are they first time offenders?
+
+3.     Which gender is more prone to commit this type of crime?
+
+4.     Where do most shootings take place? What is the most frequent place?
+
+5.     Does race play a role in mass shootings?
+
+6.     Does mental illness play a role in mass shootings?
+
+## Approach:
+
+This approach will not fully address the problem but rather will serve as a means of attempting to predict criminal behavior based on past experiences. By gathering and compiling the data of previous mass shootings, we will aim to create a guide of what to look for or what to flag as suspicious activity. This will assist with helping to provide enough police presence in areas that are more prone to attacks. It will help create a log for legally obtained weapons and who purchased them in order to better track these. The biggest thing this approach will aim to accomplish is determine the correlation (or lack thereof) between mass shootings and individuals with mental illness in order to persuade and implement a program of mental health evaluation prior to firearm sales.
+
+## Data:
+
+1.     <https://www.kaggle.com/datasets/zusmani/us-mass-shootings-last-50-years>
+
+This dataset looks at mass shooting attacks in the United States of America between 1966 and 2017. The dataset contains Serial No, Title, Location, Date, Summary, Fatalities, Injured, Total Victims, Mental Health Issue, Race, Gender, and Latitude and Longitude information. The data set was posted to Kaggle in 2022 and has been modified multiple times to add new variables, add new data, and add missing data in order to help create visualizations and extract patterns. Similar to my project, the data set aims to aid in predictions for future events and prevention of such.
+
+2.     <https://www.kaggle.com/datasets/carlosparadis/stanford-msa>
+
+This dataset attempts to facilitate research on gun violence in the US by making raw data more accessible. This dataset is comparable to the previous one except it has a bit more detail in the mental illness variable which can be very useful with the project.
+
+3.     <https://www.kaggle.com/datasets/twinkle0705/mental-health-and-suicide-rates>
+
+The goal of using this dataset is to determine if a correlation exists between mental health and suicide rates. The majority of mass shootings end with the perpetrator being shot down by the police. Because of this, it stands to reason that mass shooters go into the situation not expecting to come out alive (i.e. go in as a suicide attempt while taking people out with them). This dataset compares countries, their resources for mental health, their mental health facilities as well as their suicide rates.
+
+## Required Packages:
+
+From what I know so far, the packages required to load and compare these datasets are as follows:
+
+library(ggplot2)
+
+library(dplyr)
+
+library(readr)
+
+library(tidyr)
+
+library(stringr)
+
+library(reshape2)
+
+library(ggthemes)
+
+library(lattice)
+
+library(knitr)
+
+## Plots and Table Needs:
+
+Scatterplots, histograms, and boxplots. I would also like to incorporate a map graph to depict the rates per state and an area chart to show the change over time of mass shootings. As far as tables go, I would like to use the simple XY table as well as column tables and grouped table to go a bit more in depth for comparison purposes. A multiple variables table might also prove to be beneficial for displaying data and making it easier to understand for the reader.
+
+## Questions for Future Steps:
+
+The main thing that I do not right now that I will need in order to analyze and interpret the data is how to create the correct tables and plots as described above. I am sure that there will need to be other things to learn but right now, I do not know that that is. For the most part, I feel confident in the datasets I have collected as well as with the learnings we have covered so far to be able to compare the datasets and come to a conclusion that could possibly assist with predicting the who, what, where, how, and why of mass shootings in the United States.
+
+# Step 2:
+
+## How did you import and clean your data?
+
+Data cleaning involves handling missing values, outliers, and incorrect data. Missing values can be handled by either dropping the rows/columns with missing values. For my dataset, I used na.omit() in order to remove any empty cells that would not give accurate information for the study. I also cleaned up and corrected the date format on all of the entries as they were not all the same.
+
+## What does the final data set look like?
+
+```{r}
+
+setwd("/Users/milespena/Documents/R")
+shootingData <- read.csv("shooting-1982-2023.csv")
+shootingData.No.NA <- na.omit(shootingData)
+summary(shootingData.No.NA)
+
+```
+
+```{r}
+
+head(shootingData.No.NA)
+
+```
+
+```{r}
+
+tail(shootingData.No.NA)
+
+```
+
+## What information is not self-evident?
+
+The information that is not self-evident will be the relationship between the variables. In order to uncover new information in the data, I plan to perform exploratory data analysis (EDA) involving visualizing the data using plots, finding correlations, and identifying patterns and trends in the data. There are also two questions for which I may need to do my own research for and add columns to represent this such as previous criminal history as well as generalized location of where they shooting took place.
+
+## What are different ways you could look at this data?
+
+By performing descriptive statistics to get a sense of the distribution of each variable, or by creating visualizations like histograms or scatter plots to understand the relationships between variables.
+
+## How do you plan to slice and dice the data?
+
+I plan to explore the data by grouping it based on variables or possibly filtering to focus on a subset. The groupby() function that we used previously I feel may come in handy for this assignment. It is important to look at the data for each variable as each variable will play a key role in answering the questions of this study.
+
+## How could you summarize your data to answer key questions?
+
+In order to summarize the data, I plan on calculating measures of central tendency like the mean, median and mode as well as measures of dispersion like the standard deviation or interquartile range.
+
+## What types of plots and tables will help you to illustrate the findings to your questions?
+
+I will use bar graphs, box plots, histograms, line graphs and scatter plots to illustrate my findings. I am still unsure of which visualization will work best for the dataset and the data manipulation I perform but I intend to experiement until I find whatever best explains the point I am trying to get accross. Correlation matrices will also aid in demonstrating relationships between variables.
+
+## Do you plan on incorporating any machine learning techniques to answer your research questions? Explain.
+
+Since my research questions involve finding patterns in the data, I will be incorporating machine learning techniques to answer these. I again I am unsure if this will work or help with what I am trying to do but I aim to use regression models for now and depending on research and knew knowledge within the course, I may incorporate other techniques as well.
+
+## What questions do you have now, that will lead to further analysis or additional steps?
+
+The questions that I have at this point are mostly pertaining to which of the methods, techniques, and/or concepts that we have covered thus far could work for this project. For all previous assignments, we have been given the data and what to do with it so now having to determine which to use is overwhelming. As far as the data goes, my questions are solely in relation to the correlation of variables as well as attempting to find the appropriate answers to the questions I presented in part 1.
+
+# Step 3:
+
+## Introduction:
+
+Year by year, the amount of violence through mass shooting in America has drastically increased with numbers tripling in size since the Sandy Hook Elementary School shooting back in 2012. In combination with my bachelor degree in Criminal Justice, I aim to use what I have learned so far in my data science degree to look at data that has been collected on this subject and try to make sense of it so as to try and prevent future violent events from happening or at least be more prepared for if they do happen. We can look at different factors such as demographics, socioeconomic status, and the effect that mental illness can have on these shootings. I believe that this is an important subject and that with the help of data science we can try to better understand the underlying factors that play into mass shootings and hope that we can get ahead of it and be better at handling them and responding to them while we get to the point of preventing them altogether.
+
+## The problem statement you addressed.
+
+The problem statement that this project aimed to address was mostly an attempt of analyzing data that we already had from previous instances in order to look for patterns in the data that can in some way assist us with the prevention of future violent events or possibly assist with creating a presentation to assist with making a convincing argument for better gun legislation. By looking at specific parts of the dataset such as the weapon type, gender, location, race and mental health all assisted with making a conclusion to answer the questions we originally presented in part 1.
+
+## How you addressed this problem statement?
+
+As mentioned above, in order to address the problems presented in part 1, I took a look at each variable in the dataset that had anything to do with the questions that were asked. I used "dplyr" in order to count the number of occurrences in a column to get a good idea of which value appeared most often for each column. I also created bar graphs for each in order to visualize what the data is doing.
+
+## Analysis
+
+**Question 1: What is the choice of weapon for these shootings?**
+
+```{r}
+
+# choice of weapon
+
+library(dplyr)
+table(shootingData['weapon_type'])
+
+```
+
+```{r}
+
+library(ggplot2)
+ggplot(shootingData, aes(x = weapon_type, fill = weapon_type)) + geom_bar() + 
+  labs(title = "Weapons of Choice for Mass Shootings", 
+       x = "Weapon Type", y = "Count")
+
+```
+
+Upon trying to work with the data for weapon type, I came to the realization that the inputs for this column are all over the place making it impossible to work with without cleaning it up in depth. There are also some cases in which more than one weapon was used and I am unsure of how to separate these and account for them or how to analyze it. This is definitely something that I need more work on in order to better understand this particular column of data.
+
+**Question 2: Do the shooters have a criminal background or are they first time offenders?**
+
+This unfortunately is another one that I do not have enough data to answer. The datasets that I chose do not have enough information to determine wehter or not the attacker was a repeat or first time offender.
+
+**Question 3: Which gender is more prone to commit this type of crime?**
+
+```{r}
+
+table(shootingData['gender'])
+
+```
+
+```{r}
+
+ggplot(shootingData, aes(x = gender, fill = gender)) + geom_bar() + 
+  labs(title = "Mass Shootings by Gender", 
+       x = "Gender", y = "Count")
+
+```
+
+This was one of my favorite variables to work with mainly because it helped me gain some confidence after being unable to answer the first two questions of my project. The answer for this question was a pretty obvious one for me going into the project but I wanted to make sure that the data spoke for itself. It is clear that the male gender is more prone to committing these types of crimes than any other.
+
+**Question 4: Where do most shootings take place? What is the most frequent place?**
+
+```{r}
+
+table(shootingData['location.1'])
+
+```
+
+```{r}
+
+ggplot(shootingData, aes(x = location.1, fill = location.1)) + geom_bar() + 
+  labs(title = "Mass Shootings by Location", x = "Location", y = "Count")
+
+```
+
+The location variable helped to an extent. I did think it was a bit vague in having the Other variable rather than being more specific but that is a limitation I just had to work around. Not including the "Other" category, the workplace and school are the two top locations for where mass shootings take place and this can be accounted to disgruntled employees or students both current and past.
+
+**Question 5: Does race play a role in mass shootings?**
+
+```{r}
+
+table(shootingData['race'])
+
+```
+
+```{r}
+
+ggplot(shootingData, aes(x = race, fill = race)) + geom_bar() + 
+  labs(title = "Mass Shootings by Race", x = "Race", y = "Count")
+
+```
+
+White individuals are much more likely to be involved with and commit violent mass shootings as opposed to any other race. 
+
+**Question 6: Does mental illness play a role in mass shootings?**
+
+```{r}
+
+table(shootingData['prior_signs_mental_health_issues'])
+
+```
+
+```{r}
+
+ggplot(shootingData, aes(x = prior_signs_mental_health_issues, 
+                         fill = prior_signs_mental_health_issues)) + geom_bar() + 
+  labs(title = "Mass Shooters' Mental Health", 
+       x = "Prior Signs of Mental Health Issues", y = "Count")
+
+```
+
+This variable is missing some data for some of the attackers. However, the majority of the answers (for those that we have data for) were that yes they indeed showed signs of mental health issues prior to the attack. I think that this variable could be filled out better if the law enforcement that was in charge of the case looked to ask these questions upon interviewing the attacker's friends and families after the fact. I know that this is not a guarantee that a mental illness is present but it is the best indication that we currently have since we cannot alwasy perform a mental evaluation on the attackers as most of these end up dead either by suicide or by cop. 
+
+## Implications
+
+The implications provided upon answering the questions from part 1 are that there are in fact, some individuals that are more prone to committing crimes such as violent mass shootings. The project concludes that white individuals with prior signs of mental illness and of the male gender are typically those that are more prone to this type of crime and will more often than not, do it at their current or previous place of employment or education. While we cannot have every single individual that falls under these categories under surveillance 24/7 on the assumption that they will go on a shooting spree, we can try to provide better mental health facilities and resources and remove the stigma surrounding it particularly for white men. Of course, we cannot force everyone to talk about their problems but it zeroes in on the demographic that might require it the most in order to attempt to resolve the larger issue at hand. The mental health issue can and should also be addressed upon attempting to purchase a weapon in order to ensure that the individual is fit to own and operate one responsibly. This is not only for the safety of others but also for the safety of the individual who may be suffering from a mental break. 
+
+## Limitations
+
+Similar to what was already described above, the limitations for this project lie in the fact that there is much more information about the attacker that can be helpful to further narrow down the patterns. The limitation in resolving the issue also lies in the fact that one of the biggest issues we are seeing with mass shooters is that they are suffering from some type of mental illness. However, and I always say this, you can't help someone that doesn't want to be helped and so regardless of how many initiatives, facilities, or resources we put in place to assist with mental wellness, not everyone that needs it will reach out and seek the help. America as whole has put this stigma on men's mental health and thus they are less likely to seek out professionals to assist them with their issues, to talk about them, and work through them. 
+
+## Concluding Remarks
+
+While this project is essentially just the tip of the iceberg, I would love to continue working with the dataset in the future once I know much more than I do now. I do believe that data science can help with this issue however, I still need to learn so much more to manipulate the dataset to show me how to help. Again, I know that this will never be a perfect method for determining who as an individual will become a mass shooter, but I think it could be useful for data scientists and law enforcement to study to learn patterns and better help the communities that they serve. 
