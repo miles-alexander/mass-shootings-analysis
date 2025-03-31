@@ -32,14 +32,60 @@ This project explores mass shootings in the United States through a data science
 
 ---
 
-## Data Sources
+# Data Sources 
 
-    1. [US Mass Shootings (Kaggle)](https://www.kaggle.com/datasets/zusmani/us-mass-shootings-last-50-years)
-    2. [Stanford Mass Shootings Dataset](https://www.kaggle.com/datasets/carlosparadis/stanford-msa)
-    3. [Mental Health and Suicide Rates](https://www.kaggle.com/datasets/twinkle0705/mental-health-and-suicide-rates)
+This project uses publicly available datasets to explore patterns and variables associated with mass shootings in the United States. Due to licensing and usage rights, the datasets are **not included directly** in this repository.
+
+Please download each dataset from the original source using the links below:
 
 ---
 
+### 1. US Mass Shootings (Last 50 Years)
+- **Source:** Kaggle
+- **URL:** https://www.kaggle.com/datasets/zusmani/us-mass-shootings-last-50-years
+
+---
+
+### 2. Stanford Mass Shootings Dataset
+- **Source:** Kaggle
+- **URL:** https://www.kaggle.com/datasets/carlosparadis/stanford-msa
+
+---
+
+### 3. Mental Health and Suicide Rates
+- **Source:** Kaggle
+- **URL:** https://www.kaggle.com/datasets/twinkle0705/mental-health-and-suicide-rates
+
+---
+
+## How to Use
+
+1. Visit each dataset link and download the `.csv` files manually.
+2. Place the downloaded files in a `data/` folder at the root of this repository.
+3. Update any file paths in the `.Rmd` or `.R` scripts if needed to match your local setup.
+
+---
+
+## Cleaning & Preprocessing Notes
+
+The original datasets required several preprocessing steps to ensure accurate and consistent analysis:
+
+1. **Handling Missing Values:**
+   - Rows with missing or `NA` values were removed using `na.omit()` to prevent analytical errors.
+
+2. **Date Standardization:**
+   - Date columns were reformatted to ensure consistency (e.g., using `as.Date()` or `lubridate::mdy()`).
+
+3. **Text Standardization:**
+   - Inconsistent text values (e.g., for `weapon_type`, `gender`, and `location`) were normalized — converting to lowercase, trimming whitespace, and standardizing category labels.
+
+4. **Location Categorization:**
+   - “Other” or overly broad location labels were noted and separated from clearly defined public locations like schools or workplaces.
+
+5. **Clean Dataset Subset:**
+   - A cleaned version of the dataset (`shootingData.No.NA`) was used for most visualizations and statistical analysis throughout the project.
+
+These steps are important to reproduce the results and ensure consistent behavior in plots and summaries.
 ## Tools & Libraries
 
 - `R`
