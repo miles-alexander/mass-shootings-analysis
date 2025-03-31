@@ -32,7 +32,7 @@ This project explores mass shootings in the United States through a data science
 
 ---
 
-# Data Sources 
+## Data Sources 
 
 This project uses publicly available datasets to explore patterns and variables associated with mass shootings in the United States. Due to licensing and usage rights, the datasets are **not included directly** in this repository.
 
@@ -86,6 +86,7 @@ The original datasets required several preprocessing steps to ensure accurate an
    - A cleaned version of the dataset (`shootingData.No.NA`) was used for most visualizations and statistical analysis throughout the project.
 
 These steps are important to reproduce the results and ensure consistent behavior in plots and summaries.
+
 ## Tools & Libraries
 
 - `R`
