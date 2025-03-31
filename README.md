@@ -1,5 +1,4 @@
-# Mass Shootings in the United States: A Data-Driven Investigation  
-
+# 📊 Mass Shootings in the U.S.: Patterns and Insights
 
 ## Overview
 
