@@ -1,4 +1,4 @@
-# 📊 Mass Shootings in the U.S.: Patterns and Insights
+# Mass Shootings in the U.S.: Patterns and Insights 📊 
 
 ## Overview
 
