@@ -1,0 +1,30 @@
+# History files
+.Rhistory
+.Rapp.history
+
+# Session Data files
+.RData
+
+# RStudio files
+.Rproj.user/
+.Rproj
+*.Rproj
+
+# Environment Variables
+.env
+
+# Compiled Code
+*.o
+*.so
+*.dll
+
+# Output files
+*.html
+*.pdf
+*.docx
+
+# Cache or temporary files
+*.tmp
+*.log
+*.aux
+*.out
