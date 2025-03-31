@@ -1,5 +1,5 @@
 ---
-title: "Final Project"
+title: "Mass Shootings in America"
 author: "Miles Peña"
 date: "2024-03-02"
 output:
