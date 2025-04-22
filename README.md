@@ -88,25 +88,26 @@ Please download each dataset from the original source using the links below:
 
 To run this project on your own machine:
 
-- **Clone the Repository**:
+**Clone the Repository**:
    ```bash
    git clone https://github.com/miles-alexander/mass-shootings-analysis.git
    ```
 
-- **Go to the Project Directory:**
+**Go to the Project Directory**:
     ```bash
     cd mass-shootings-analysis
     ```
 
-- **Open the R project or R script in RStudio.**
+**Open the R project or R script in RStudio.**
 
-- **Install the required packages:**
+**Install the required packages:**
    ```R
    install.packages(c("dplyr", "ggplot2", "tidyr", "lattice", "reshape2", "ggthemes", "knitr"))
    ```
 
-- **Run `.Rmd` file**:
-   - Click `Knit` in RStudio to generate the HTML report.
+**Run `.Rmd` file**:
+    ```Click `Knit` in RStudio to generate the HTML report.
+    ```
 
 ## Key Findings
 
